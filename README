@@ -1,0 +1,24 @@
+Como colocar imagens .svg diretamente em um arquivo LaTeX?
+
+Para isso existe o pacote svg.
+
+https://ctan.org/pkg/svg?lang=en
+
+Ele, porém, exige que você tenha instalado o Inkscape (software open-source) na sua máquina e que o seu sistema permita rodá-lo. 
+
+Para isso:
+1. o diretório onde está o executável do inkscape tem que estar no PATH
+2. você tem que permitir que o processador LaTeX chame o shell do sistema.passando para ele o parâmetro  "--shell-escape" (pelo menos no caso do pdfLaTeX.
+
+Para usar o pacote, recomendo o parâmetro inkscapelatex=false, pois ele evita  que o texto da imagem seja separado dos desenhos da imagem e facilita (muito) tratar o tamanho
+
+A chamada do pacote, então, deve ser
+
+\usepackage[inkscapelatex=false]{svg}
+
+E, para usá-lo, faça algo como:
+
+
+\includesvg[scale=1.5]{Imagens/533/atividade.svg}
+
+Lembrem que eu falei que era melhor sempre transformar sua imagem em pdf se você usa pdfLaTeX? Acontece que algumas vezes o seu software vai gerar um pdf ruim, então pode ser melhor usar a imagem em svg. Esse foi o caso dessa imagem que eu usei.
